@@ -1,0 +1,393 @@
+
+GPIO_AVR.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000220  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00000220  00000294  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .stab         000006cc  00000000  00000000  00000294  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      00000085  00000000  00000000  00000960  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_aranges 00000080  00000000  00000000  000009e8  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   0000053e  00000000  00000000  00000a68  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000010e  00000000  00000000  00000fa6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000227  00000000  00000000  000010b4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000000d4  00000000  00000000  000012dc  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000011f  00000000  00000000  000013b0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000287  00000000  00000000  000014cf  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e0 e2       	ldi	r30, 0x20	; 32
+  68:	f2 e0       	ldi	r31, 0x02	; 2
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a0 36       	cpi	r26, 0x60	; 96
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	10 e0       	ldi	r17, 0x00	; 0
+  78:	a0 e6       	ldi	r26, 0x60	; 96
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a0 36       	cpi	r26, 0x60	; 96
+  82:	b1 07       	cpc	r27, r17
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 f6 00 	call	0x1ec	; 0x1ec <main>
+  8a:	0c 94 0e 01 	jmp	0x21c	; 0x21c <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <Port_Direction>:
+}
+
+
+void Port_Direction ( char base , char state )
+{
+	if (state==output)
+  92:	61 30       	cpi	r22, 0x01	; 1
+  94:	29 f4       	brne	.+10     	; 0xa0 <Port_Direction+0xe>
+	(*(volatile unsigned char*)(base+1))=0xff; // DDRA = 0XFF
+  96:	e8 2f       	mov	r30, r24
+  98:	f0 e0       	ldi	r31, 0x00	; 0
+  9a:	8f ef       	ldi	r24, 0xFF	; 255
+  9c:	81 83       	std	Z+1, r24	; 0x01
+  9e:	08 95       	ret
+	else
+	(*(volatile unsigned char*)(base+1))=0x00;
+  a0:	e8 2f       	mov	r30, r24
+  a2:	f0 e0       	ldi	r31, 0x00	; 0
+  a4:	11 82       	std	Z+1, r1	; 0x01
+  a6:	08 95       	ret
+
+000000a8 <Pin_Direction>:
+}
+
+void Pin_Direction(char base , char pin , char state)
+{
+	if (state==output)
+  a8:	41 30       	cpi	r20, 0x01	; 1
+  aa:	79 f4       	brne	.+30     	; 0xca <Pin_Direction+0x22>
+	(*(volatile unsigned char*)(base+1))|=(1<<pin);
+  ac:	e8 2f       	mov	r30, r24
+  ae:	f0 e0       	ldi	r31, 0x00	; 0
+  b0:	21 81       	ldd	r18, Z+1	; 0x01
+  b2:	81 e0       	ldi	r24, 0x01	; 1
+  b4:	90 e0       	ldi	r25, 0x00	; 0
+  b6:	ac 01       	movw	r20, r24
+  b8:	02 c0       	rjmp	.+4      	; 0xbe <Pin_Direction+0x16>
+  ba:	44 0f       	add	r20, r20
+  bc:	55 1f       	adc	r21, r21
+  be:	6a 95       	dec	r22
+  c0:	e2 f7       	brpl	.-8      	; 0xba <Pin_Direction+0x12>
+  c2:	ba 01       	movw	r22, r20
+  c4:	62 2b       	or	r22, r18
+  c6:	61 83       	std	Z+1, r22	; 0x01
+  c8:	08 95       	ret
+	else
+	(*(volatile unsigned char*)(base+1))&=~(1<<pin);
+  ca:	e8 2f       	mov	r30, r24
+  cc:	f0 e0       	ldi	r31, 0x00	; 0
+  ce:	21 81       	ldd	r18, Z+1	; 0x01
+  d0:	81 e0       	ldi	r24, 0x01	; 1
+  d2:	90 e0       	ldi	r25, 0x00	; 0
+  d4:	ac 01       	movw	r20, r24
+  d6:	02 c0       	rjmp	.+4      	; 0xdc <Pin_Direction+0x34>
+  d8:	44 0f       	add	r20, r20
+  da:	55 1f       	adc	r21, r21
+  dc:	6a 95       	dec	r22
+  de:	e2 f7       	brpl	.-8      	; 0xd8 <Pin_Direction+0x30>
+  e0:	ba 01       	movw	r22, r20
+  e2:	60 95       	com	r22
+  e4:	62 23       	and	r22, r18
+  e6:	61 83       	std	Z+1, r22	; 0x01
+  e8:	08 95       	ret
+
+000000ea <Pin_Reset>:
+}
+
+void Pin_Reset (char base , char pin )
+{
+	(*(volatile unsigned char*)(base+2))&=~(1<<pin);
+  ea:	e8 2f       	mov	r30, r24
+  ec:	f0 e0       	ldi	r31, 0x00	; 0
+  ee:	22 81       	ldd	r18, Z+2	; 0x02
+  f0:	81 e0       	ldi	r24, 0x01	; 1
+  f2:	90 e0       	ldi	r25, 0x00	; 0
+  f4:	ac 01       	movw	r20, r24
+  f6:	02 c0       	rjmp	.+4      	; 0xfc <Pin_Reset+0x12>
+  f8:	44 0f       	add	r20, r20
+  fa:	55 1f       	adc	r21, r21
+  fc:	6a 95       	dec	r22
+  fe:	e2 f7       	brpl	.-8      	; 0xf8 <Pin_Reset+0xe>
+ 100:	ba 01       	movw	r22, r20
+ 102:	60 95       	com	r22
+ 104:	62 23       	and	r22, r18
+ 106:	62 83       	std	Z+2, r22	; 0x02
+}
+ 108:	08 95       	ret
+
+0000010a <Pin_Set>:
+
+void Pin_Set (char base , char pin )
+{
+	(*(volatile unsigned char*)(base+2))|=(1<<pin);
+ 10a:	e8 2f       	mov	r30, r24
+ 10c:	f0 e0       	ldi	r31, 0x00	; 0
+ 10e:	22 81       	ldd	r18, Z+2	; 0x02
+ 110:	81 e0       	ldi	r24, 0x01	; 1
+ 112:	90 e0       	ldi	r25, 0x00	; 0
+ 114:	ac 01       	movw	r20, r24
+ 116:	02 c0       	rjmp	.+4      	; 0x11c <Pin_Set+0x12>
+ 118:	44 0f       	add	r20, r20
+ 11a:	55 1f       	adc	r21, r21
+ 11c:	6a 95       	dec	r22
+ 11e:	e2 f7       	brpl	.-8      	; 0x118 <Pin_Set+0xe>
+ 120:	ba 01       	movw	r22, r20
+ 122:	62 2b       	or	r22, r18
+ 124:	62 83       	std	Z+2, r22	; 0x02
+}
+ 126:	08 95       	ret
+
+00000128 <Pin_Toggle>:
+
+void Pin_Toggle (char base , char pin )
+{
+	(*(volatile unsigned char*)(base+2))^=(1<<pin);
+ 128:	e8 2f       	mov	r30, r24
+ 12a:	f0 e0       	ldi	r31, 0x00	; 0
+ 12c:	22 81       	ldd	r18, Z+2	; 0x02
+ 12e:	81 e0       	ldi	r24, 0x01	; 1
+ 130:	90 e0       	ldi	r25, 0x00	; 0
+ 132:	ac 01       	movw	r20, r24
+ 134:	02 c0       	rjmp	.+4      	; 0x13a <Pin_Toggle+0x12>
+ 136:	44 0f       	add	r20, r20
+ 138:	55 1f       	adc	r21, r21
+ 13a:	6a 95       	dec	r22
+ 13c:	e2 f7       	brpl	.-8      	; 0x136 <Pin_Toggle+0xe>
+ 13e:	ba 01       	movw	r22, r20
+ 140:	62 27       	eor	r22, r18
+ 142:	62 83       	std	Z+2, r22	; 0x02
+}
+ 144:	08 95       	ret
+
+00000146 <Port_Write>:
+
+void Port_Write (char base, char value )
+{
+	(*(volatile unsigned char*)(base+2))=value;
+ 146:	e8 2f       	mov	r30, r24
+ 148:	f0 e0       	ldi	r31, 0x00	; 0
+ 14a:	62 83       	std	Z+2, r22	; 0x02
+}
+ 14c:	08 95       	ret
+
+0000014e <Port_Read>:
+
+char Port_Read (char base )
+{
+ 14e:	cf 93       	push	r28
+ 150:	df 93       	push	r29
+ 152:	0f 92       	push	r0
+ 154:	cd b7       	in	r28, 0x3d	; 61
+ 156:	de b7       	in	r29, 0x3e	; 62
+	volatile unsigned char result;
+	result= (*(volatile unsigned char*)(base));
+ 158:	e8 2f       	mov	r30, r24
+ 15a:	f0 e0       	ldi	r31, 0x00	; 0
+ 15c:	80 81       	ld	r24, Z
+ 15e:	89 83       	std	Y+1, r24	; 0x01
+	return result;
+ 160:	89 81       	ldd	r24, Y+1	; 0x01
+}
+ 162:	0f 90       	pop	r0
+ 164:	df 91       	pop	r29
+ 166:	cf 91       	pop	r28
+ 168:	08 95       	ret
+
+0000016a <Pin_Write>:
+
+
+void Pin_Write(char base, char pin, char value)
+{
+	if (value==0)
+ 16a:	44 23       	and	r20, r20
+ 16c:	79 f4       	brne	.+30     	; 0x18c <Pin_Write+0x22>
+	(*(volatile unsigned char*)(base+2))|=1<<pin ;
+ 16e:	e8 2f       	mov	r30, r24
+ 170:	f0 e0       	ldi	r31, 0x00	; 0
+ 172:	22 81       	ldd	r18, Z+2	; 0x02
+ 174:	81 e0       	ldi	r24, 0x01	; 1
+ 176:	90 e0       	ldi	r25, 0x00	; 0
+ 178:	ac 01       	movw	r20, r24
+ 17a:	02 c0       	rjmp	.+4      	; 0x180 <Pin_Write+0x16>
+ 17c:	44 0f       	add	r20, r20
+ 17e:	55 1f       	adc	r21, r21
+ 180:	6a 95       	dec	r22
+ 182:	e2 f7       	brpl	.-8      	; 0x17c <Pin_Write+0x12>
+ 184:	ba 01       	movw	r22, r20
+ 186:	62 2b       	or	r22, r18
+ 188:	62 83       	std	Z+2, r22	; 0x02
+ 18a:	08 95       	ret
+	else
+	(*(volatile unsigned char*)(base+2)) &=~(1<<pin);
+ 18c:	e8 2f       	mov	r30, r24
+ 18e:	f0 e0       	ldi	r31, 0x00	; 0
+ 190:	22 81       	ldd	r18, Z+2	; 0x02
+ 192:	81 e0       	ldi	r24, 0x01	; 1
+ 194:	90 e0       	ldi	r25, 0x00	; 0
+ 196:	ac 01       	movw	r20, r24
+ 198:	02 c0       	rjmp	.+4      	; 0x19e <Pin_Write+0x34>
+ 19a:	44 0f       	add	r20, r20
+ 19c:	55 1f       	adc	r21, r21
+ 19e:	6a 95       	dec	r22
+ 1a0:	e2 f7       	brpl	.-8      	; 0x19a <Pin_Write+0x30>
+ 1a2:	ba 01       	movw	r22, r20
+ 1a4:	60 95       	com	r22
+ 1a6:	62 23       	and	r22, r18
+ 1a8:	62 83       	std	Z+2, r22	; 0x02
+ 1aa:	08 95       	ret
+
+000001ac <Pin_Read>:
+}
+
+char Pin_Read (char base, char pin)
+{
+ 1ac:	cf 93       	push	r28
+ 1ae:	df 93       	push	r29
+ 1b0:	0f 92       	push	r0
+ 1b2:	cd b7       	in	r28, 0x3d	; 61
+ 1b4:	de b7       	in	r29, 0x3e	; 62
+	volatile unsigned char result ;
+	result= (*(volatile unsigned char*)(base)&&(1<<pin));
+ 1b6:	e8 2f       	mov	r30, r24
+ 1b8:	f0 e0       	ldi	r31, 0x00	; 0
+ 1ba:	80 81       	ld	r24, Z
+ 1bc:	88 23       	and	r24, r24
+ 1be:	71 f0       	breq	.+28     	; 0x1dc <Pin_Read+0x30>
+ 1c0:	81 e0       	ldi	r24, 0x01	; 1
+ 1c2:	90 e0       	ldi	r25, 0x00	; 0
+ 1c4:	9c 01       	movw	r18, r24
+ 1c6:	02 c0       	rjmp	.+4      	; 0x1cc <Pin_Read+0x20>
+ 1c8:	22 0f       	add	r18, r18
+ 1ca:	33 1f       	adc	r19, r19
+ 1cc:	6a 95       	dec	r22
+ 1ce:	e2 f7       	brpl	.-8      	; 0x1c8 <Pin_Read+0x1c>
+	(*(volatile unsigned char*)(base+2))|=1<<pin ;
+	else
+	(*(volatile unsigned char*)(base+2)) &=~(1<<pin);
+}
+
+char Pin_Read (char base, char pin)
+ 1d0:	21 15       	cp	r18, r1
+ 1d2:	31 05       	cpc	r19, r1
+ 1d4:	29 f4       	brne	.+10     	; 0x1e0 <Pin_Read+0x34>
+ 1d6:	80 e0       	ldi	r24, 0x00	; 0
+ 1d8:	90 e0       	ldi	r25, 0x00	; 0
+ 1da:	02 c0       	rjmp	.+4      	; 0x1e0 <Pin_Read+0x34>
+{
+	volatile unsigned char result ;
+	result= (*(volatile unsigned char*)(base)&&(1<<pin));
+ 1dc:	80 e0       	ldi	r24, 0x00	; 0
+ 1de:	90 e0       	ldi	r25, 0x00	; 0
+ 1e0:	89 83       	std	Y+1, r24	; 0x01
+	return result;
+ 1e2:	89 81       	ldd	r24, Y+1	; 0x01
+}
+ 1e4:	0f 90       	pop	r0
+ 1e6:	df 91       	pop	r29
+ 1e8:	cf 91       	pop	r28
+ 1ea:	08 95       	ret
+
+000001ec <main>:
+char Pin_Read (char base, char pin);
+
+
+int main(void)
+{
+	Port_Direction(C,output);
+ 1ec:	83 e3       	ldi	r24, 0x33	; 51
+ 1ee:	61 e0       	ldi	r22, 0x01	; 1
+ 1f0:	0e 94 49 00 	call	0x92	; 0x92 <Port_Direction>
+	Port_Direction(B,input);
+ 1f4:	86 e3       	ldi	r24, 0x36	; 54
+ 1f6:	60 e0       	ldi	r22, 0x00	; 0
+ 1f8:	0e 94 49 00 	call	0x92	; 0x92 <Port_Direction>
+    while(1)
+    {
+		if(Pin_Read(B,3))
+ 1fc:	86 e3       	ldi	r24, 0x36	; 54
+ 1fe:	63 e0       	ldi	r22, 0x03	; 3
+ 200:	0e 94 d6 00 	call	0x1ac	; 0x1ac <Pin_Read>
+ 204:	88 23       	and	r24, r24
+ 206:	29 f0       	breq	.+10     	; 0x212 <main+0x26>
+		Pin_Reset(C,4);
+ 208:	83 e3       	ldi	r24, 0x33	; 51
+ 20a:	64 e0       	ldi	r22, 0x04	; 4
+ 20c:	0e 94 75 00 	call	0xea	; 0xea <Pin_Reset>
+ 210:	f5 cf       	rjmp	.-22     	; 0x1fc <main+0x10>
+		else
+		Pin_Set(C,4);		
+ 212:	83 e3       	ldi	r24, 0x33	; 51
+ 214:	64 e0       	ldi	r22, 0x04	; 4
+ 216:	0e 94 85 00 	call	0x10a	; 0x10a <Pin_Set>
+ 21a:	f0 cf       	rjmp	.-32     	; 0x1fc <main+0x10>
+
+0000021c <_exit>:
+ 21c:	f8 94       	cli
+
+0000021e <__stop_program>:
+ 21e:	ff cf       	rjmp	.-2      	; 0x21e <__stop_program>
