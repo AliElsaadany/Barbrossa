@@ -1,0 +1,401 @@
+
+7segment_3.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000208  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00000208  0000027c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .stab         000006cc  00000000  00000000  0000027c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      00000085  00000000  00000000  00000948  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_aranges 000000a0  00000000  00000000  000009d0  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000591  00000000  00000000  00000a70  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000169  00000000  00000000  00001001  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000410  00000000  00000000  0000116a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000034  00000000  00000000  0000157c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000014e  00000000  00000000  000015b0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000276  00000000  00000000  000016fe  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e8 e0       	ldi	r30, 0x08	; 8
+  68:	f2 e0       	ldi	r31, 0x02	; 2
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a0 36       	cpi	r26, 0x60	; 96
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	10 e0       	ldi	r17, 0x00	; 0
+  78:	a0 e6       	ldi	r26, 0x60	; 96
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a0 36       	cpi	r26, 0x60	; 96
+  82:	b1 07       	cpc	r27, r17
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 91 00 	call	0x122	; 0x122 <main>
+  8a:	0c 94 02 01 	jmp	0x204	; 0x204 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <decoder>:
+        //TODO:: Please write your application code 
+    }
+}
+unsigned short decoder (unsigned short number)
+{
+	switch(number)
+  92:	84 30       	cpi	r24, 0x04	; 4
+  94:	91 05       	cpc	r25, r1
+  96:	51 f1       	breq	.+84     	; 0xec <decoder+0x5a>
+  98:	85 30       	cpi	r24, 0x05	; 5
+  9a:	91 05       	cpc	r25, r1
+  9c:	68 f4       	brcc	.+26     	; 0xb8 <decoder+0x26>
+  9e:	81 30       	cpi	r24, 0x01	; 1
+  a0:	91 05       	cpc	r25, r1
+  a2:	d1 f1       	breq	.+116    	; 0x118 <decoder+0x86>
+  a4:	81 30       	cpi	r24, 0x01	; 1
+  a6:	91 05       	cpc	r25, r1
+  a8:	a0 f1       	brcs	.+104    	; 0x112 <decoder+0x80>
+  aa:	82 30       	cpi	r24, 0x02	; 2
+  ac:	91 05       	cpc	r25, r1
+  ae:	c1 f0       	breq	.+48     	; 0xe0 <decoder+0x4e>
+  b0:	83 30       	cpi	r24, 0x03	; 3
+  b2:	91 05       	cpc	r25, r1
+  b4:	69 f5       	brne	.+90     	; 0x110 <decoder+0x7e>
+  b6:	17 c0       	rjmp	.+46     	; 0xe6 <decoder+0x54>
+  b8:	87 30       	cpi	r24, 0x07	; 7
+  ba:	91 05       	cpc	r25, r1
+  bc:	01 f1       	breq	.+64     	; 0xfe <decoder+0x6c>
+  be:	88 30       	cpi	r24, 0x08	; 8
+  c0:	91 05       	cpc	r25, r1
+  c2:	38 f4       	brcc	.+14     	; 0xd2 <decoder+0x40>
+  c4:	85 30       	cpi	r24, 0x05	; 5
+  c6:	91 05       	cpc	r25, r1
+  c8:	a1 f0       	breq	.+40     	; 0xf2 <decoder+0x60>
+  ca:	86 30       	cpi	r24, 0x06	; 6
+  cc:	91 05       	cpc	r25, r1
+  ce:	01 f5       	brne	.+64     	; 0x110 <decoder+0x7e>
+  d0:	13 c0       	rjmp	.+38     	; 0xf8 <decoder+0x66>
+  d2:	88 30       	cpi	r24, 0x08	; 8
+  d4:	91 05       	cpc	r25, r1
+  d6:	b1 f0       	breq	.+44     	; 0x104 <decoder+0x72>
+  d8:	89 30       	cpi	r24, 0x09	; 9
+  da:	91 05       	cpc	r25, r1
+  dc:	c9 f4       	brne	.+50     	; 0x110 <decoder+0x7e>
+  de:	15 c0       	rjmp	.+42     	; 0x10a <decoder+0x78>
+	{
+		case 0: return 0x3F; break;
+		case 1: return 0x06; break;
+		case 2: return 0x5B; break;
+  e0:	2b e5       	ldi	r18, 0x5B	; 91
+  e2:	30 e0       	ldi	r19, 0x00	; 0
+  e4:	1b c0       	rjmp	.+54     	; 0x11c <decoder+0x8a>
+		case 3: return 0x4f; break;
+  e6:	2f e4       	ldi	r18, 0x4F	; 79
+  e8:	30 e0       	ldi	r19, 0x00	; 0
+  ea:	18 c0       	rjmp	.+48     	; 0x11c <decoder+0x8a>
+		case 4: return 0x66; break;
+  ec:	26 e6       	ldi	r18, 0x66	; 102
+  ee:	30 e0       	ldi	r19, 0x00	; 0
+  f0:	15 c0       	rjmp	.+42     	; 0x11c <decoder+0x8a>
+		case 5: return 0x6D; break;
+  f2:	2d e6       	ldi	r18, 0x6D	; 109
+  f4:	30 e0       	ldi	r19, 0x00	; 0
+  f6:	12 c0       	rjmp	.+36     	; 0x11c <decoder+0x8a>
+		case 6: return 0x7D; break;
+  f8:	2d e7       	ldi	r18, 0x7D	; 125
+  fa:	30 e0       	ldi	r19, 0x00	; 0
+  fc:	0f c0       	rjmp	.+30     	; 0x11c <decoder+0x8a>
+		case 7: return 0x07; break;
+  fe:	27 e0       	ldi	r18, 0x07	; 7
+ 100:	30 e0       	ldi	r19, 0x00	; 0
+ 102:	0c c0       	rjmp	.+24     	; 0x11c <decoder+0x8a>
+		case 8: return 0x7F; break;
+ 104:	2f e7       	ldi	r18, 0x7F	; 127
+ 106:	30 e0       	ldi	r19, 0x00	; 0
+ 108:	09 c0       	rjmp	.+18     	; 0x11c <decoder+0x8a>
+		case 9: return 0x6F; break;
+ 10a:	2f e6       	ldi	r18, 0x6F	; 111
+ 10c:	30 e0       	ldi	r19, 0x00	; 0
+ 10e:	06 c0       	rjmp	.+12     	; 0x11c <decoder+0x8a>
+ 110:	08 95       	ret
+}
+unsigned short decoder (unsigned short number)
+{
+	switch(number)
+	{
+		case 0: return 0x3F; break;
+ 112:	2f e3       	ldi	r18, 0x3F	; 63
+ 114:	30 e0       	ldi	r19, 0x00	; 0
+ 116:	02 c0       	rjmp	.+4      	; 0x11c <decoder+0x8a>
+		case 1: return 0x06; break;
+ 118:	26 e0       	ldi	r18, 0x06	; 6
+ 11a:	30 e0       	ldi	r19, 0x00	; 0
+		
+		
+
+	}
+	
+ 11c:	82 2f       	mov	r24, r18
+ 11e:	93 2f       	mov	r25, r19
+ 120:	08 95       	ret
+
+00000122 <main>:
+
+unsigned short decoder (unsigned short number);
+
+int main(void)
+{
+	DDRC=0XFF;
+ 122:	8f ef       	ldi	r24, 0xFF	; 255
+ 124:	84 bb       	out	0x14, r24	; 20
+	DDRD=0X07;
+ 126:	87 e0       	ldi	r24, 0x07	; 7
+ 128:	81 bb       	out	0x11, r24	; 17
+	PORTC=0X00;
+ 12a:	15 ba       	out	0x15, r1	; 21
+	unsigned char digit1,digit2,digit3;
+	unsigned int counter=0;
+	unsigned char d=10;
+ 12c:	1a e0       	ldi	r17, 0x0A	; 10
+{
+	DDRC=0XFF;
+	DDRD=0X07;
+	PORTC=0X00;
+	unsigned char digit1,digit2,digit3;
+	unsigned int counter=0;
+ 12e:	c0 e0       	ldi	r28, 0x00	; 0
+ 130:	d0 e0       	ldi	r29, 0x00	; 0
+	unsigned char d=10;
+    while(1)
+    {
+		digit1 = counter%10;
+ 132:	0f 2e       	mov	r0, r31
+ 134:	fa e0       	ldi	r31, 0x0A	; 10
+ 136:	ef 2e       	mov	r14, r31
+ 138:	ff 24       	eor	r15, r15
+ 13a:	f0 2d       	mov	r31, r0
+		digit1= decoder(digit1);
+		digit2=(counter/10)%10;
+		digit2=decoder(digit2);
+		digit3=(counter/100)%10;
+ 13c:	0f 2e       	mov	r0, r31
+ 13e:	f4 e6       	ldi	r31, 0x64	; 100
+ 140:	8f 2e       	mov	r8, r31
+ 142:	99 24       	eor	r9, r9
+ 144:	f0 2d       	mov	r31, r0
+				d=10;
+				
+		
+			}
+			if(counter>999)
+			counter=0;
+ 146:	66 24       	eor	r6, r6
+ 148:	77 24       	eor	r7, r7
+		{
+			d--;
+			if (d==0)
+			{
+				counter++;
+				d=10;
+ 14a:	0f 2e       	mov	r0, r31
+ 14c:	fa e0       	ldi	r31, 0x0A	; 10
+ 14e:	af 2e       	mov	r10, r31
+ 150:	f0 2d       	mov	r31, r0
+ 152:	01 c0       	rjmp	.+2      	; 0x156 <main+0x34>
+				
+		
+			}
+			if(counter>999)
+			counter=0;
+ 154:	e3 01       	movw	r28, r6
+	unsigned char digit1,digit2,digit3;
+	unsigned int counter=0;
+	unsigned char d=10;
+    while(1)
+    {
+		digit1 = counter%10;
+ 156:	ce 01       	movw	r24, r28
+ 158:	b7 01       	movw	r22, r14
+ 15a:	0e 94 ee 00 	call	0x1dc	; 0x1dc <__udivmodhi4>
+ 15e:	6b 01       	movw	r12, r22
+		digit1= decoder(digit1);
+ 160:	90 e0       	ldi	r25, 0x00	; 0
+ 162:	0e 94 49 00 	call	0x92	; 0x92 <decoder>
+ 166:	b8 2e       	mov	r11, r24
+		digit2=(counter/10)%10;
+ 168:	c6 01       	movw	r24, r12
+ 16a:	b7 01       	movw	r22, r14
+ 16c:	0e 94 ee 00 	call	0x1dc	; 0x1dc <__udivmodhi4>
+		digit2=decoder(digit2);
+ 170:	90 e0       	ldi	r25, 0x00	; 0
+ 172:	0e 94 49 00 	call	0x92	; 0x92 <decoder>
+ 176:	08 2f       	mov	r16, r24
+		digit3=(counter/100)%10;
+ 178:	ce 01       	movw	r24, r28
+ 17a:	b4 01       	movw	r22, r8
+ 17c:	0e 94 ee 00 	call	0x1dc	; 0x1dc <__udivmodhi4>
+ 180:	cb 01       	movw	r24, r22
+ 182:	b7 01       	movw	r22, r14
+ 184:	0e 94 ee 00 	call	0x1dc	; 0x1dc <__udivmodhi4>
+		digit3=decoder(digit3);
+ 188:	90 e0       	ldi	r25, 0x00	; 0
+ 18a:	0e 94 49 00 	call	0x92	; 0x92 <decoder>
+		
+		PORTC=digit1;
+ 18e:	b5 ba       	out	0x15, r11	; 21
+		PORTD|=(1<<PD0);
+ 190:	90 9a       	sbi	0x12, 0	; 18
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 192:	ef e1       	ldi	r30, 0x1F	; 31
+ 194:	fe e4       	ldi	r31, 0x4E	; 78
+ 196:	31 97       	sbiw	r30, 0x01	; 1
+ 198:	f1 f7       	brne	.-4      	; 0x196 <main+0x74>
+ 19a:	00 c0       	rjmp	.+0      	; 0x19c <main+0x7a>
+ 19c:	00 00       	nop
+		_delay_ms(5);
+		PORTD&=~(1<<PD0);
+ 19e:	90 98       	cbi	0x12, 0	; 18
+		
+		PORTC=digit2;
+ 1a0:	05 bb       	out	0x15, r16	; 21
+		PORTD|=(1<<PD1);
+ 1a2:	91 9a       	sbi	0x12, 1	; 18
+ 1a4:	ef e1       	ldi	r30, 0x1F	; 31
+ 1a6:	fe e4       	ldi	r31, 0x4E	; 78
+ 1a8:	31 97       	sbiw	r30, 0x01	; 1
+ 1aa:	f1 f7       	brne	.-4      	; 0x1a8 <main+0x86>
+ 1ac:	00 c0       	rjmp	.+0      	; 0x1ae <main+0x8c>
+ 1ae:	00 00       	nop
+		_delay_ms(5);
+		PORTD&=~(1<<PD1);
+ 1b0:	91 98       	cbi	0x12, 1	; 18
+		
+		PORTC=digit3;
+ 1b2:	85 bb       	out	0x15, r24	; 21
+		PORTD|=(1<<PD2);
+ 1b4:	92 9a       	sbi	0x12, 2	; 18
+ 1b6:	8f e1       	ldi	r24, 0x1F	; 31
+ 1b8:	9e e4       	ldi	r25, 0x4E	; 78
+ 1ba:	01 97       	sbiw	r24, 0x01	; 1
+ 1bc:	f1 f7       	brne	.-4      	; 0x1ba <main+0x98>
+ 1be:	00 c0       	rjmp	.+0      	; 0x1c0 <main+0x9e>
+ 1c0:	00 00       	nop
+		_delay_ms(5);
+		PORTD&=~(1<<PD2);
+ 1c2:	92 98       	cbi	0x12, 2	; 18
+		
+		if(d>0)
+ 1c4:	11 23       	and	r17, r17
+ 1c6:	39 f2       	breq	.-114    	; 0x156 <main+0x34>
+		{
+			d--;
+ 1c8:	11 50       	subi	r17, 0x01	; 1
+			if (d==0)
+ 1ca:	11 f4       	brne	.+4      	; 0x1d0 <main+0xae>
+			{
+				counter++;
+ 1cc:	21 96       	adiw	r28, 0x01	; 1
+				d=10;
+ 1ce:	1a 2d       	mov	r17, r10
+				
+		
+			}
+			if(counter>999)
+ 1d0:	93 e0       	ldi	r25, 0x03	; 3
+ 1d2:	c8 3e       	cpi	r28, 0xE8	; 232
+ 1d4:	d9 07       	cpc	r29, r25
+ 1d6:	08 f0       	brcs	.+2      	; 0x1da <main+0xb8>
+ 1d8:	bd cf       	rjmp	.-134    	; 0x154 <main+0x32>
+ 1da:	bd cf       	rjmp	.-134    	; 0x156 <main+0x34>
+
+000001dc <__udivmodhi4>:
+ 1dc:	aa 1b       	sub	r26, r26
+ 1de:	bb 1b       	sub	r27, r27
+ 1e0:	51 e1       	ldi	r21, 0x11	; 17
+ 1e2:	07 c0       	rjmp	.+14     	; 0x1f2 <__udivmodhi4_ep>
+
+000001e4 <__udivmodhi4_loop>:
+ 1e4:	aa 1f       	adc	r26, r26
+ 1e6:	bb 1f       	adc	r27, r27
+ 1e8:	a6 17       	cp	r26, r22
+ 1ea:	b7 07       	cpc	r27, r23
+ 1ec:	10 f0       	brcs	.+4      	; 0x1f2 <__udivmodhi4_ep>
+ 1ee:	a6 1b       	sub	r26, r22
+ 1f0:	b7 0b       	sbc	r27, r23
+
+000001f2 <__udivmodhi4_ep>:
+ 1f2:	88 1f       	adc	r24, r24
+ 1f4:	99 1f       	adc	r25, r25
+ 1f6:	5a 95       	dec	r21
+ 1f8:	a9 f7       	brne	.-22     	; 0x1e4 <__udivmodhi4_loop>
+ 1fa:	80 95       	com	r24
+ 1fc:	90 95       	com	r25
+ 1fe:	bc 01       	movw	r22, r24
+ 200:	cd 01       	movw	r24, r26
+ 202:	08 95       	ret
+
+00000204 <_exit>:
+ 204:	f8 94       	cli
+
+00000206 <__stop_program>:
+ 206:	ff cf       	rjmp	.-2      	; 0x206 <__stop_program>
